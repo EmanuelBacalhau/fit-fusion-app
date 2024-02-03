@@ -16,12 +16,24 @@ export interface RegisterUserUseCaseRequest {
 }
 
 export class RegisterUserUseCase {
-  constructor(private userRepository: UsersRepository) {}
+  constructor(private usersRepository: UsersRepository) {}
 
   async execute(data: RegisterUserUseCaseRequest) {
+    const emailInuse = await this.usersRepository.findByEmail(data.email)
+
+    if (emailInuse) {
+      throw new Error('Is email in use')
+    }
+
+    const phoneInUse = await this.usersRepository.findByPhone(data.phone)
+
+    if (phoneInUse) {
+      throw new Error('Is phone in use')
+    }
+
     const passwordHash = await hash(data.password, 6)
 
-    await this.userRepository.create({
+    await this.usersRepository.create({
       ...data,
       password: passwordHash,
     })

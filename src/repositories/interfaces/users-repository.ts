@@ -15,4 +15,5 @@ export interface UsersRepository {
   create(data: Prisma.UserCreateInput): Promise<void>
   findById(id: string): Promise<FindByIdResponse | null>
   findByEmail(email: string): Promise<FindByEmailResponse | null>
+  findByPhone(phone: string): Promise<boolean>
 }
