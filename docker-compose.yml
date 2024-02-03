@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  fit-fusion-app:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=fitFusion
+      - POSTGRESQL_PASSWORD=fitFusion
+      - POSTGRESQL_DATABASE=fitFusion

@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  FEMALE
+  MALE
+}
+
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+model User {
+  id         String   @id @default(cuid())
+  avatarUrl  String?
+  firstName  String
+  lastName   String
+  phone      String   @unique
+  email      String   @unique
+  password   String
+  weight     Float
+  height     Float
+  gender     Gender
+  role       Role     @default(CLIENT)
+  created_at DateTime @default(now()) @db.Date
+
+  userExercise UserExercise[]
+  history      History[]
+
+  @@map("users")
+}
+
+model TypeExercise {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  exercises Exercise[]
+
+  @@map("types_exercises")
+}
+
+model Exercise {
+  id       String @id @default(cuid())
+  name     String
+  gifUrl   String
+  coverUrl String
+  typeId   String
+
+  typeExercise TypeExercise   @relation(fields: [typeId], references: [id])
+  userExercise UserExercise[]
+  history      History[]
+
+  @@map("exercises")
+}
+
+model Day {
+  id   String @id @default(cuid())
+  name String @unique
+
+  userExercise UserExercise[]
+
+  @@map("days")
+}
+
+model UserExercise {
+  id          String @id @default(cuid())
+  series      Int    @db.SmallInt
+  repetitions Int    @db.SmallInt
+  exerciseId  String
+  userId      String
+  dayId       String
+
+  exercise Exercise @relation(fields: [exerciseId], references: [id])
+  day      Day      @relation(fields: [dayId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+
+  @@map("user_has_exercises")
+}
+
+model History {
+  id         String   @id @default(cuid())
+  userId     String
+  exerciseId String
+  realizedIn DateTime
+
+  user     User     @relation(fields: [userId], references: [id])
+  exercise Exercise @relation(fields: [exerciseId], references: [id])
+
+  @@map("histories")
+}
