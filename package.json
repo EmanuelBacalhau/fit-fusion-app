@@ -4,7 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js",
+    "start:dev": "tsx watch src/server.ts",
+    "test:unit": "vitest run --dir src/use-cases",
+    "test:unit:watch": "vitest --dir src/use-cases",
+    "test:e2e": "vitest run --dir src/controller",
+    "test:e2e:watch": "vitest --dir src/controller"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "2.1.0",
@@ -12,8 +18,12 @@
     "@types/node": "20.11.16",
     "eslint": "8.56.0",
     "prisma": "5.9.1",
+    "supertest": "6.3.4",
     "tsup": "8.0.1",
-    "typescript": "5.3.3"
+    "tsx": "4.7.0",
+    "typescript": "5.3.3",
+    "vite-tsconfig-paths": "4.3.1",
+    "vitest": "1.2.2"
   },
   "dependencies": {
     "@prisma/client": "5.9.1",
