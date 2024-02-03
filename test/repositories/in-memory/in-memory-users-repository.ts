@@ -8,7 +8,7 @@ export class InMemoryUsersRepository implements UsersRepository {
   async create(data: User) {
     this.items.push({
       ...data,
-      id: randomUUID(),
+      id: !data.id ? randomUUID() : data.id,
     })
   }
 
@@ -22,6 +22,21 @@ export class InMemoryUsersRepository implements UsersRepository {
     return {
       userId: user.id,
       password: user.password,
+    }
+  }
+
+  async findById(id: string) {
+    const user = this.items.find((item) => item.id === id)
+
+    if (!user) {
+      return null
+    }
+
+    return {
+      avatarUrl: user.avatarUrl,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
     }
   }
 }

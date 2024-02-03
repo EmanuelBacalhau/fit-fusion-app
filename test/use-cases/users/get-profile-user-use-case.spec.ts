@@ -1,22 +1,23 @@
 import { describe, it, expect, beforeEach } from 'vitest'
+import { AuthenticateUserUseCase } from '@use-cases/users/authenticate-user-use-case'
 import { InMemoryUsersRepository } from '@in-memory/in-memory-users-repository'
-import { GetProfileUserUseCase } from '@use-cases/users/get-profile-user-use-case'
+import { hash } from 'bcryptjs'
 
 let usersRepository: InMemoryUsersRepository
-let sut: GetProfileUserUseCase
+let sut: AuthenticateUserUseCase
 
-describe('Get profile user use case', () => {
+describe('Authenticate user use case', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository()
-    sut = new GetProfileUserUseCase(usersRepository)
+    sut = new AuthenticateUserUseCase(usersRepository)
   })
   it('should be able register user', async () => {
     await usersRepository.create({
-      id: 'user-id',
+      id: '123456',
       firstName: 'John',
       lastName: 'Doe',
       email: 'johnDoe@gmail.com',
-      password: '123456789',
+      password: await hash('123456789', 5),
       gender: 'MALE',
       role: 'CLIENT',
       phone: '00000000000',
@@ -26,8 +27,11 @@ describe('Get profile user use case', () => {
       created_at: new Date(),
     })
 
-    const { user } = await sut.execute({ userId: 'user-id' })
+    const { userId } = await sut.execute({
+      email: 'johnDoe@gmail.com',
+      password: '123456789',
+    })
 
-    expect(user.email).toEqual(expect.any(String))
+    expect(userId).toEqual(expect.any(String))
   })
 })
