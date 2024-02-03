@@ -7,13 +7,14 @@
     "build": "tsup src --out-dir build",
     "start": "node build/server.js",
     "start:dev": "tsx watch src/server.ts",
-    "test:unit": "vitest run --dir src/use-cases",
-    "test:unit:watch": "vitest --dir src/use-cases",
-    "test:e2e": "vitest run --dir src/controller",
-    "test:e2e:watch": "vitest --dir src/controller"
+    "test:unit": "vitest run --dir test/use-cases",
+    "test:unit:watch": "vitest --dir test/use-cases",
+    "test:e2e": "vitest run --dir test/controller",
+    "test:e2e:watch": "vitest --dir test/controller"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "2.1.0",
+    "@types/bcryptjs": "2.4.6",
     "@types/express": "4.17.21",
     "@types/node": "20.11.16",
     "eslint": "8.56.0",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "@prisma/client": "5.9.1",
+    "bcryptjs": "2.4.3",
     "dotenv": "16.4.1",
     "express": "4.18.2",
     "zod": "3.22.4"
