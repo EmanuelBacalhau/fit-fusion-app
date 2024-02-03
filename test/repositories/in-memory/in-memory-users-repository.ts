@@ -11,4 +11,17 @@ export class InMemoryUsersRepository implements UsersRepository {
       id: randomUUID(),
     })
   }
+
+  async findByEmail(email: string) {
+    const user = this.items.find((item) => item.email === email)
+
+    if (!user) {
+      return null
+    }
+
+    return {
+      userId: user.id,
+      password: user.password,
+    }
+  }
 }
