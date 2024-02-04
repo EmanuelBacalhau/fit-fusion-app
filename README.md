@@ -7,7 +7,7 @@ Fit Fusion
 - [X] Deve ser possível se cadastrar;
 - [X] Deve ser possível se autenticar;
 - [X] Deve ser possível ver o perfil de um usuário logado (foto de perfil, email, nome, sobrenome);
-- [] Deve ser possível cadastrar dias da semana;
+- [X] Deve ser possível cadastrar dias da semana;
 - [] Deve ser possível cadastrar tipos de treino;
 - [] Deve ser possível listar todos os tipos de treino;
 - [] Deve ser possível cadastrar exercicios;
