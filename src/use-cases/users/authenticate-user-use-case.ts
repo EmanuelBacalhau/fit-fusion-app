@@ -27,7 +27,7 @@ export class AuthenticateUserUseCase {
     }
 
     return {
-      userId: user.userId,
+      userId: user.id,
     }
   }
 }

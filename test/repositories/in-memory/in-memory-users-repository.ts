@@ -19,10 +19,7 @@ export class InMemoryUsersRepository implements UsersRepository {
       return null
     }
 
-    return {
-      userId: user.id,
-      password: user.password,
-    }
+    return user
   }
 
   async findById(id: string) {
@@ -32,12 +29,7 @@ export class InMemoryUsersRepository implements UsersRepository {
       return null
     }
 
-    return {
-      avatarUrl: user.avatarUrl,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-    }
+    return user
   }
 
   async findByPhone(phone: string) {

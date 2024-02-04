@@ -1,19 +1,8 @@
-import { Prisma } from '@prisma/client'
-
-interface FindByEmailResponse {
-  userId: string
-  password: string
-}
-interface FindByIdResponse {
-  avatarUrl: string | null
-  firstName: string
-  lastName: string
-  email: string
-}
+import { Prisma, User } from '@prisma/client'
 
 export interface UsersRepository {
   create(data: Prisma.UserCreateInput): Promise<void>
-  findById(id: string): Promise<FindByIdResponse | null>
-  findByEmail(email: string): Promise<FindByEmailResponse | null>
+  findById(id: string): Promise<User | null>
+  findByEmail(email: string): Promise<User | null>
   findByPhone(phone: string): Promise<boolean>
 }

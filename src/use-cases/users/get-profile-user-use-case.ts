@@ -9,7 +9,7 @@ interface GetProfileUserUseCaseResponse {
     email: string
     firstName: string
     lastName: string
-    avatarUrl: string
+    avatarUrl: string | null
   }
 }
 
@@ -26,7 +26,12 @@ export class GetProfileUserUseCase {
     }
 
     return {
-      user,
+      user: {
+        avatarUrl: user.avatarUrl,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
     }
   }
 }

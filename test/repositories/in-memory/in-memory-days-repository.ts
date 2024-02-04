@@ -12,6 +12,16 @@ export class InMemorDaysRepository implements DaysRepository {
     })
   }
 
+  async findById(id: string) {
+    const day = this.items.find((item) => item.id === id)
+
+    if (!day) {
+      return null
+    }
+
+    return day
+  }
+
   async findByName(name: string): Promise<boolean> {
     const day = this.items.find((item) => item.name === name)
 

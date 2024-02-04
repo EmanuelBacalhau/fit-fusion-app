@@ -11,4 +11,14 @@ export class InMemoryExercisesRepository implements ExercisesRepository {
       id: !data.id ? randomUUID() : data.id,
     })
   }
+
+  async findById(id: string) {
+    const exercise = this.items.find((item) => (item.id = id))
+
+    if (!exercise) {
+      return null
+    }
+
+    return exercise
+  }
 }
