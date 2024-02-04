@@ -5,13 +5,13 @@ import { InMemorDaysRepository } from '@in-memory/in-memory-days-repository'
 let daysRepository: InMemorDaysRepository
 let sut: RegisterDayUseCase
 
-describe('Register user use case', () => {
+describe('Register day use case', () => {
   beforeEach(() => {
     daysRepository = new InMemorDaysRepository()
     sut = new RegisterDayUseCase(daysRepository)
   })
 
-  it('should be able register user', async () => {
+  it('should be able register day', async () => {
     await sut.execute({
       name: 'day',
     })
@@ -19,7 +19,7 @@ describe('Register user use case', () => {
     expect(daysRepository.items).toHaveLength(1)
   })
 
-  it('should not be able register user (phone or email duplicate)', async () => {
+  it('should not be able register day (name duplicate)', async () => {
     await sut.execute({
       name: 'day',
     })
