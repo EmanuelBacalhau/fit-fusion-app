@@ -15,12 +15,22 @@ export class InMemoryTypesExerciseRepository
   }
 
   async findByName(name: string): Promise<boolean> {
-    const day = this.items.find((item) => item.name === name)
+    const type = this.items.find((item) => item.name === name)
 
-    if (!day) {
+    if (!type) {
       return false
     }
 
     return true
+  }
+
+  async findById(id: string) {
+    const type = this.items.find((item) => item.id === id)
+
+    if (!type) {
+      return null
+    }
+
+    return type
   }
 }
