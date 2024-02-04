@@ -13,4 +13,20 @@ export class InMemoryUserHasExercisesRepository
       id: !data.id ? randomUUID() : data.id,
     })
   }
+
+  async findManyByDayIdAndUserId(userId: string, dayId: string) {
+    const exercises = this.items
+      .filter((item) => item.userId === userId && item.dayId === dayId)
+      .map((item) => ({
+        id: item.id,
+        series: item.series,
+        repetitions: item.repetitions,
+        exercise: {
+          name: 'Exercise',
+          coverUrl: 'cover.png',
+        },
+      }))
+
+    return exercises
+  }
 }

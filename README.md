@@ -10,7 +10,7 @@ Fit Fusion
 - [X] Deve ser possível cadastrar dias da semana;
 - [X] Deve ser possível cadastrar tipos de treino;
 - [X] Deve ser possível cadastrar exercicios;
-- [] Deve ser possível cadastrar exercícios para um determinado usuário;
+- [X] Deve ser possível cadastrar exercícios para um determinado usuário;
 - [] Deve ser possível listar os treinos de um deteminado usuário pelo dia da semana;
 - [] Deve ser possível listar histórico de usuário agrupado por dia;
 - [] Deve ser possível atualizar foto de perfil, nome e senha;
