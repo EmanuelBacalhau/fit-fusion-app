@@ -12,10 +12,9 @@ Fit Fusion
 - [X] Deve ser possível cadastrar exercicios;
 - [X] Deve ser possível cadastrar exercícios para um determinado usuário;
 - [X] Deve ser possível listar os treinos de um deteminado usuário pelo dia da semana;
-- [X] Deve ser possível registrar histórico de usuário;
+- [X] Deve ser possível realizar check-in em treino diários;
 - [X] Deve ser possível listar histórico de usuário agrupado por dia;
 - [] Deve ser possível atualizar foto de perfil, nome e senha;
-- [] Deve ser possível realizar check-in em treino diários;
 
 ## RNs (Regras de negócio)
 
