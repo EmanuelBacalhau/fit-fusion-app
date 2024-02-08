@@ -32,7 +32,9 @@
     "paths": {
       "@use-cases/*": ["./src/use-cases/*"],
       "@repositories/*": ["./src/repositories/*"],
-      "@in-memory/*": ["./test/repositories/in-memory/*"]
+      "@http/controllers/*": ["./src/http/controllers/*"],
+      "@middlewares/*": ["./src/http/middlewares/*"],
+      "@in-memory/*": ["./test/repositories/in-memory/*"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
