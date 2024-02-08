@@ -1,4 +1,5 @@
 import { DaysRepository } from '@repositories/interfaces/days-repository'
+import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
 
 interface RegisterDayUseCaseRequest {
   name: string
@@ -11,7 +12,7 @@ export class RegisterDayUseCase {
     const day = await this.daysRepository.findByName(name)
 
     if (day) {
-      throw new Error('Is name in use')
+      throw new FieldInUseError()
     }
 
     await this.daysRepository.create({

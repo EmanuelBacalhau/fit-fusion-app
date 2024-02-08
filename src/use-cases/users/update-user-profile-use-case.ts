@@ -1,4 +1,5 @@
 import { UsersRepository } from '@repositories/interfaces/users-repository'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 interface UpdateUserProfileUseCaseRequest {
   avatarUrl?: string | null
@@ -14,7 +15,7 @@ export class UpdateUserProfileUseCase {
     const user = await this.usersRepository.findById(userId)
 
     if (!user) {
-      throw new Error('Resource not found')
+      throw new ResourceNotFoundError()
     }
 
     await this.usersRepository.update(userId, data)

@@ -1,6 +1,7 @@
 import { hash } from 'bcryptjs'
 import { $Enums } from '@prisma/client'
 import { UsersRepository } from '../../repositories/interfaces/users-repository'
+import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
 
 export interface RegisterUserUseCaseRequest {
   avatarUrl?: string
@@ -22,13 +23,13 @@ export class RegisterUserUseCase {
     const emailInuse = await this.usersRepository.findByEmail(data.email)
 
     if (emailInuse) {
-      throw new Error('Is email in use')
+      throw new FieldInUseError()
     }
 
     const phoneInUse = await this.usersRepository.findByPhone(data.phone)
 
     if (phoneInUse) {
-      throw new Error('Is phone in use')
+      throw new FieldInUseError()
     }
 
     const passwordHash = await hash(data.password, 6)

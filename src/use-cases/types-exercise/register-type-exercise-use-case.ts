@@ -1,4 +1,5 @@
 import { TypesExerciseRepository } from '@repositories/interfaces/types-exercise-repository'
+import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
 
 interface RegisterTypeExerciseUseCaseRequest {
   name: string
@@ -11,7 +12,7 @@ export class RegisterTypeExerciseUseCase {
     const type = await this.typesExerciseRepository.findByName(name)
 
     if (type) {
-      throw new Error('Is type in use')
+      throw new FieldInUseError()
     }
 
     await this.typesExerciseRepository.create({

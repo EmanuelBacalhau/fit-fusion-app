@@ -4,6 +4,7 @@ import {
   UserHasExercisesRepository,
 } from '@repositories/interfaces/user-has-exercises-repository'
 import { UsersRepository } from '@repositories/interfaces/users-repository'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 interface FetchListOfUserHasExerciseByDayUseCaseRequest {
   userId: string
@@ -28,13 +29,13 @@ export class FetchListOfUserHasExerciseByDayUseCase {
     const user = await this.usersRepository.findById(userId)
 
     if (!user) {
-      throw new Error('Resource not found')
+      throw new ResourceNotFoundError()
     }
 
     const day = await this.daysRepository.findById(dayId)
 
     if (!day) {
-      throw new Error('Resource not found')
+      throw new ResourceNotFoundError()
     }
 
     const exercises =

@@ -1,6 +1,7 @@
 import { ExercisesRepository } from '@repositories/interfaces/exercises-repository'
 import { HistoriesRepository } from '@repositories/interfaces/histories-repository'
 import { UsersRepository } from '@repositories/interfaces/users-repository'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 interface FetchListOfHistoryUseCaseRequest {
   userId: string
@@ -23,13 +24,13 @@ export class RegisterHistoryUseCase {
     const user = await this.usersRepository.findById(userId)
 
     if (!user) {
-      throw new Error('Resource not found')
+      throw new ResourceNotFoundError()
     }
 
     const exercise = await this.exercisesRepository.findById(exerciseId)
 
     if (!exercise) {
-      throw new Error('Resource not found')
+      throw new ResourceNotFoundError()
     }
 
     await this.historiesRepository.create({

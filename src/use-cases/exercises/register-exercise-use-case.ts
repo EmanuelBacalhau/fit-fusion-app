@@ -1,5 +1,6 @@
 import { ExercisesRepository } from '@repositories/interfaces/exercises-repository'
 import { TypesExerciseRepository } from '@repositories/interfaces/types-exercise-repository'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 interface RegisterExerciseUseCaseRequest {
   name: string
@@ -20,7 +21,7 @@ export class RegisterExerciseUseCase {
     )
 
     if (!typeExercise) {
-      throw new Error('Resource not found')
+      throw new ResourceNotFoundError()
     }
 
     await this.exercisesRepository.create(data)

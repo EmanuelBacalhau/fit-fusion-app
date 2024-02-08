@@ -1,4 +1,5 @@
 import { UsersRepository } from '@repositories/interfaces/users-repository'
+import { InvalidCrediantialsError } from '@use-cases/errors/crediantials-invalid-error'
 import { compare } from 'bcryptjs'
 
 export interface AuthenticateUserUseCaseRequest {
@@ -17,13 +18,13 @@ export class AuthenticateUserUseCase {
     const user = await this.usersRepository.findByEmail(email)
 
     if (!user) {
-      throw new Error('Crediantials invalid!')
+      throw new InvalidCrediantialsError()
     }
 
     const passwordHash = await compare(password, user.password)
 
     if (!passwordHash) {
-      throw new Error('Crediantials invalid!')
+      throw new InvalidCrediantialsError()
     }
 
     return {
