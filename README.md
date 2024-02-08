@@ -14,7 +14,7 @@ Fit Fusion
 - [X] Deve ser possível listar os treinos de um deteminado usuário pelo dia da semana;
 - [X] Deve ser possível realizar check-in em treino diários;
 - [X] Deve ser possível listar histórico de usuário agrupado por dia;
-- [] Deve ser possível atualizar foto de perfil, nome e senha;
+- [X] Deve ser possível atualizar foto de perfil, nome e senha;
 
 ## RNs (Regras de negócio)
 
