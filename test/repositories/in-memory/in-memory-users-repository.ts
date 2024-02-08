@@ -1,6 +1,9 @@
 import { randomUUID } from 'crypto'
 import { User } from '@prisma/client'
-import { UsersRepository } from '@repositories/interfaces/users-repository'
+import {
+  UpdateUser,
+  UsersRepository,
+} from '@repositories/interfaces/users-repository'
 
 export class InMemoryUsersRepository implements UsersRepository {
   public items: User[] = []
@@ -40,5 +43,21 @@ export class InMemoryUsersRepository implements UsersRepository {
     }
 
     return true
+  }
+
+  async update(userId: string, data: UpdateUser): Promise<void> {
+    const user = this.items.find((item) => item.id === userId)
+
+    const findIndex = this.items.findIndex((item) => item.id === userId)
+
+    if (user) {
+      this.items[findIndex] = {
+        ...user,
+        avatarUrl: !data.avatarUrl ? user.avatarUrl : data.avatarUrl,
+        firstName: !data.firstName ? user.firstName : data.firstName,
+        lastName: !data.lastName ? user.lastName : data.lastName,
+        password: !data.password ? user.password : data.password,
+      }
+    }
   }
 }
