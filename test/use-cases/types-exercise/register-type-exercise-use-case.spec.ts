@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { InMemoryTypesExerciseRepository } from '@in-memory/in-memory-types-exercise-repository'
 import { RegisterTypeExerciseUseCase } from '@use-cases/types-exercise/register-type-exercise-use-case'
+import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
 
 let typesExerciseRepository: InMemoryTypesExerciseRepository
 let sut: RegisterTypeExerciseUseCase
@@ -28,6 +29,6 @@ describe('Register type exercise use case', () => {
       sut.execute({
         name: 'type-exercise',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(FieldInUseError)
   })
 })

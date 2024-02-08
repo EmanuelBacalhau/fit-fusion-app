@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { InMemoryTypesExerciseRepository } from '@in-memory/in-memory-types-exercise-repository'
 import { InMemoryExercisesRepository } from '@in-memory/in-memory-exercises-repository'
 import { RegisterExerciseUseCase } from '@use-cases/exercises/register-exercise-use-case'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 let typesExerciseRepository: InMemoryTypesExerciseRepository
 let exercisesRepository: InMemoryExercisesRepository
@@ -41,6 +42,6 @@ describe('Register exercise use case', () => {
         gifUrl: 'gif.png',
         typeId: 'type-1',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

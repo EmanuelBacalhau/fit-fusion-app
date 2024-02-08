@@ -3,6 +3,7 @@ import { InMemoryUsersRepository } from '@in-memory/in-memory-users-repository'
 import { InMemoryExercisesRepository } from '@in-memory/in-memory-exercises-repository'
 import { RegisterHistoryUseCase } from '@use-cases/histories/register-history-use-case'
 import { InMemoryHistoriesRepository } from '@in-memory/in-memory-histories-repository'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 let usersRepository: InMemoryUsersRepository
 let exercisesRepository: InMemoryExercisesRepository
@@ -61,6 +62,6 @@ describe('Register history use case', () => {
         userId: '1',
         realizedIn: new Date(),
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

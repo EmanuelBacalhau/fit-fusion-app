@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { RegisterUserUseCase } from '@use-cases/users/register-user-use-case'
 import { InMemoryUsersRepository } from '@in-memory/in-memory-users-repository'
+import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
 
 let usersRepository: InMemoryUsersRepository
 let sut: RegisterUserUseCase
@@ -55,6 +56,6 @@ describe('Register user use case', () => {
         weight: 75,
         avatarUrl: 'test.png',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(FieldInUseError)
   })
 })

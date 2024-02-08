@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@in-memory/in-memory-users-repository'
 import { UpdateUserProfileUseCase } from '@use-cases/users/update-user-profile-use-case'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 let usersRepository: InMemoryUsersRepository
 let sut: UpdateUserProfileUseCase
@@ -39,6 +40,6 @@ describe('Update user profile use case', () => {
       sut.execute('user-01', {
         firstName: 'Update name',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

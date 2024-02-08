@@ -4,6 +4,7 @@ import { InMemorDaysRepository } from '@in-memory/in-memory-days-repository'
 import { InMemoryUsersRepository } from '@in-memory/in-memory-users-repository'
 import { InMemoryUserHasExercisesRepository } from '@in-memory/in-memory-user-has-exercise-repository'
 import { RegisterUserHasExerciseUseCase } from '@use-cases/user-has-exercises/register-user-has-exercise-use-case'
+import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 
 let daysRepository: InMemorDaysRepository
 let usersRepository: InMemoryUsersRepository
@@ -74,6 +75,6 @@ describe('Register user has exercise use case', () => {
         userId: 'user-1',
         exerciseId: 'exercise-1',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

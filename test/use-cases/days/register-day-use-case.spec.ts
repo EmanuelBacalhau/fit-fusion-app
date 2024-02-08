@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { RegisterDayUseCase } from '@use-cases/days/register-day-use-case'
 import { InMemorDaysRepository } from '@in-memory/in-memory-days-repository'
+import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
 
 let daysRepository: InMemorDaysRepository
 let sut: RegisterDayUseCase
@@ -28,6 +29,6 @@ describe('Register day use case', () => {
       sut.execute({
         name: 'day',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(FieldInUseError)
   })
 })
