@@ -4,7 +4,7 @@ import { UsersRepository } from '../../repositories/interfaces/users-repository'
 import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
 
 export interface RegisterUserUseCaseRequest {
-  avatarUrl?: string
+  avatarUrl: string | null
   firstName: string
   lastName: string
   phone: string

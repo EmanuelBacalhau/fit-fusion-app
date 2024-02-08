@@ -1,2 +1,14 @@
+# Folders
 /node_modules
 /build
+
+# Files
+/uploads/*/*png
+/uploads/*/*svg
+/uploads/*/*jpeg
+/uploads/*/*jpg
+/uploads/*/*mp4
+/uploads/*/*gif
+
+# Environment
+.env
