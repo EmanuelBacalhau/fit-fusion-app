@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest'
-import supertest from 'supertest'
-import { app } from 'src/app'
 import { resolve } from 'path'
+import { app } from '@src/app'
+import supertest from 'supertest'
+import { describe, it, expect } from 'vitest'
 
 describe('Register uses controller (e2e)', () => {
   it('should be able registe user', async () => {
@@ -12,9 +12,9 @@ describe('Register uses controller (e2e)', () => {
       .attach('avatar', avatar)
       .field('firstName', 'John')
       .field('lastName', 'Doe')
-      .field('email', 'johnDoe@gmail.com')
+      .field('email', 'johnDoe1@gmail.com')
       .field('password', '123456789')
-      .field('phone', '88999999999')
+      .field('phone', '88999999998')
       .field('weight', 80)
       .field('height', 1.75)
       .field('gender', 'MALE')

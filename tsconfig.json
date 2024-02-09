@@ -30,9 +30,11 @@
     // "moduleResolution": "node10",                     /* Specify how TypeScript looks up a file from a given module specifier. */
     "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
+      "@src/*": ["./src/*"],
       "@use-cases/*": ["./src/use-cases/*"],
+      "@factories/*": ["./src/factories/*"],
+      "@controllers/*": ["./src/controllers/*"],
       "@repositories/*": ["./src/repositories/*"],
-      "@http/controllers/*": ["./src/http/controllers/*"],
       "@middlewares/*": ["./src/http/middlewares/*"],
       "@in-memory/*": ["./test/repositories/in-memory/*"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */

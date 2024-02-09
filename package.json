@@ -9,8 +9,8 @@
     "start:dev": "tsx watch src/server.ts",
     "test:unit": "vitest run --dir test/use-cases",
     "test:unit:watch": "vitest --dir test/use-cases",
-    "test:e2e": "vitest run --dir test/http/controllers",
-    "test:e2e:watch": "vitest --dir test/http/controllers",
+    "test:e2e": "vitest run --dir test/controllers",
+    "test:e2e:watch": "vitest --dir test/controllers",
     "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
     "test:insatll-prisma-environment": "npm link vitest-environment-prisma",
     "pretest:e2e": "run-s test:create-prisma-environment test:insatll-prisma-environment"

@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import { unlinkSync } from 'fs'
 import { Request, Response } from 'express'
 import { FieldInUseError } from '@use-cases/errors/field-in-use-error'
-import { makeRegisterUserUseCase } from 'src/factories/users/make-register-user-use-case'
+import { makeRegisterUserUseCase } from '@factories/users/make-register-user-use-case'
 
 export class RegisterUserController {
   async handle(request: Request, response: Response) {

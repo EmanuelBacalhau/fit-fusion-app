@@ -1,5 +1,5 @@
-import { userRoutes } from '@http/controllers/users/routes'
 import express from 'express'
+import { userRoutes } from '@controllers/users/routes'
 
 export const app = express()
 
