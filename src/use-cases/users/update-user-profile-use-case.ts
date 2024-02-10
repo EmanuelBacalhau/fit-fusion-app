@@ -1,5 +1,8 @@
 import { UsersRepository } from '@repositories/interfaces/users-repository'
+import { env } from '@src/env'
 import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
+import { unlinkSync } from 'fs'
+import { resolve } from 'path'
 
 interface UpdateUserProfileUseCaseRequest {
   avatarUrl?: string | null
@@ -16,6 +19,11 @@ export class UpdateUserProfileUseCase {
 
     if (!user) {
       throw new ResourceNotFoundError()
+    }
+
+    if (user.avatarUrl !== null) {
+      const filename = user.avatarUrl.replace(`${env.BASE_URL}/uploads/`, '')
+      unlinkSync(resolve(__dirname, '../../../uploads/avatars', filename))
     }
 
     await this.usersRepository.update(userId, data)

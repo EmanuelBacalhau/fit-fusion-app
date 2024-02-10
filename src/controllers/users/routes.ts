@@ -5,6 +5,7 @@ import { AuthenticateUserController } from './authenticate-user-controller'
 import { RefreshTokenUserController } from './refresh-token-user-controller'
 import { isAuthenticated } from '@src/middlewares/is-authenticated'
 import { GetUserProfileController } from './get-user-profile-controller'
+import { UpdateUserProfileController } from './update-user-profile-controller'
 
 export const userRoutes = Router()
 
@@ -21,5 +22,9 @@ userRoutes.patch(
   isAuthenticated,
   new RefreshTokenUserController().handle,
 )
-
 userRoutes.get('/me', isAuthenticated, new GetUserProfileController().handle)
+userRoutes.patch(
+  '/users',
+  isAuthenticated,
+  new UpdateUserProfileController().handle,
+)

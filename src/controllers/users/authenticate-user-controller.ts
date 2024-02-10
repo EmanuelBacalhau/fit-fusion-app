@@ -3,7 +3,7 @@ import { env } from '@src/env'
 import { sign } from 'jsonwebtoken'
 import { Request, Response } from 'express'
 import { makeAuthenticateUserUseCase } from '@src/factories/users/make-authenticate-user-use-case'
-import { ErrorHandling } from '@src/errors/error-handling'
+import { InvalidCrediantialsError } from '@src/use-cases/errors/crediantials-invalid-error'
 
 export class AuthenticateUserController {
   async handle(request: Request, response: Response) {
@@ -39,7 +39,7 @@ export class AuthenticateUserController {
         .status(200)
         .json({ token })
     } catch (error) {
-      if (error instanceof ErrorHandling) {
+      if (error instanceof InvalidCrediantialsError) {
         return response.status(error.status).end()
       }
 
