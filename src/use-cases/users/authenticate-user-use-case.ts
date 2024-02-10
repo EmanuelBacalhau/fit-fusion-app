@@ -9,6 +9,7 @@ export interface AuthenticateUserUseCaseRequest {
 
 export interface AuthenticateUserUseCaseResponse {
   userId: string
+  role: string
 }
 
 export class AuthenticateUserUseCase {
@@ -29,6 +30,7 @@ export class AuthenticateUserUseCase {
 
     return {
       userId: user.id,
+      role: user.role,
     }
   }
 }

@@ -49,6 +49,8 @@ export class RegisterUserController {
           message: error.message,
         })
       }
+
+      throw error
     }
   }
 }
