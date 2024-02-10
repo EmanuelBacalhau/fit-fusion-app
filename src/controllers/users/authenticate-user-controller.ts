@@ -1,9 +1,9 @@
-import { env } from '@src/env'
-import { makeAuthenticateUserUseCase } from '@src/factories/users/make-authenticate-user-use-case'
-import { ErrorHandling } from '@src/use-cases/errors/error-handling'
-import { Request, Response } from 'express'
-import { sign } from 'jsonwebtoken'
 import { z } from 'zod'
+import { env } from '@src/env'
+import { sign } from 'jsonwebtoken'
+import { Request, Response } from 'express'
+import { makeAuthenticateUserUseCase } from '@src/factories/users/make-authenticate-user-use-case'
+import { ErrorHandling } from '@src/errors/error-handling'
 
 export class AuthenticateUserController {
   async handle(request: Request, response: Response) {
@@ -21,9 +21,23 @@ export class AuthenticateUserController {
 
       const token = sign({ role: userData.role }, env.JWT_SECRET, {
         subject: userData.userId,
+        expiresIn: '1h',
       })
 
-      return response.status(200).json({ token })
+      const refreshToken = sign({ role: userData.role }, env.JWT_SECRET, {
+        subject: userData.userId,
+        expiresIn: '1d',
+      })
+
+      return response
+        .cookie('refresh-token', refreshToken, {
+          path: '/',
+          secure: true,
+          sameSite: true,
+          httpOnly: true,
+        })
+        .status(200)
+        .json({ token })
     } catch (error) {
       if (error instanceof ErrorHandling) {
         return response.status(error.status).end()

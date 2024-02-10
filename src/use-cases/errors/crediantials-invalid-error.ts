@@ -1,4 +1,4 @@
-import { ErrorHandling } from './error-handling'
+import { ErrorHandling } from '@src/errors/error-handling'
 
 export class InvalidCrediantialsError extends ErrorHandling {
   constructor() {
