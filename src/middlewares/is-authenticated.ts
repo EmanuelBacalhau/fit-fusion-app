@@ -25,7 +25,7 @@ export async function isAuthenticated(
     const { sub, role } = verify(token, env.JWT_SECRET) as Payload
 
     request.user = {
-      id: sub,
+      id: sub!,
       role,
     }
 
