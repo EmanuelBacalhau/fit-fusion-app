@@ -27,9 +27,7 @@ describe('Update user profile controller (e2e)', () => {
     const response = await supertest(app)
       .patch('/users')
       .auth(responseAuth.body.token, { type: 'bearer' })
-      .send({
-        firstName: 'John Doe',
-      })
+      .attach('avatar', avatar)
 
     expect(response.status).toEqual(204)
   })

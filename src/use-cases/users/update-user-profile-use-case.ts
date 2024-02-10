@@ -21,8 +21,9 @@ export class UpdateUserProfileUseCase {
       throw new ResourceNotFoundError()
     }
 
-    if (user.avatarUrl !== null) {
+    if (data.avatarUrl && user.avatarUrl !== null) {
       const filename = user.avatarUrl.replace(`${env.BASE_URL}/uploads/`, '')
+
       unlinkSync(resolve(__dirname, '../../../uploads/avatars', filename))
     }
 

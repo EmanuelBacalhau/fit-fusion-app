@@ -26,5 +26,6 @@ userRoutes.get('/me', isAuthenticated, new GetUserProfileController().handle)
 userRoutes.patch(
   '/users',
   isAuthenticated,
+  multerConfig.user.single('avatar'),
   new UpdateUserProfileController().handle,
 )
