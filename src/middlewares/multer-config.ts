@@ -4,7 +4,7 @@ import multer, { diskStorage } from 'multer'
 
 const storage = (path: string) => {
   return diskStorage({
-    destination: resolve(__dirname, '../../../uploads', path),
+    destination: resolve(__dirname, '../../uploads', path),
     filename: (request, file, cb) => {
       const hash = randomBytes(16).toString('hex')
 

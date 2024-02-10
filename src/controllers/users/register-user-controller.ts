@@ -40,7 +40,7 @@ export class RegisterUserController {
     } catch (error) {
       if (request.file?.filename) {
         unlinkSync(
-          resolve(__dirname, '../../../../uploads', request.file.filename),
+          resolve(__dirname, '../../../uploads/avatars', request.file.filename),
         )
       }
 
