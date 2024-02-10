@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import supertest from 'supertest'
 import { describe, it, expect } from 'vitest'
 
-describe('Authenticate uses controller (e2e)', () => {
+describe('Authenticate user controller (e2e)', () => {
   it('should be able authenticate user', async () => {
     const avatar = resolve(__dirname, '../../../src/utils/test/test.png')
 

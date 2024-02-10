@@ -3,8 +3,8 @@ import { resolve } from 'path'
 import supertest from 'supertest'
 import { describe, it, expect } from 'vitest'
 
-describe('Authenticate uses controller (e2e)', () => {
-  it('should be able authenticate user', async () => {
+describe('Refresh token users controller (e2e)', () => {
+  it('should be able refresh token', async () => {
     const avatar = resolve(__dirname, '../../../src/utils/test/test.png')
 
     await supertest(app)
@@ -25,7 +25,7 @@ describe('Authenticate uses controller (e2e)', () => {
     })
 
     const response = await supertest(app)
-      .patch('/refresh-token')
+      .patch('/token/refresh')
       .auth(responseAuth.body.token, { type: 'bearer' })
       .send()
 
