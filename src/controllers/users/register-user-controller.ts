@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { ZodError, z } from 'zod'
 import { env } from 'src/env'
 import { resolve } from 'path'
 import { unlinkSync } from 'fs'
@@ -26,9 +26,9 @@ export class RegisterUserController {
       avatarUrl = `${env.BASE_URL}/uploads/${request.file.filename}`
     }
 
-    const data = registerBodySchema.parse(request.body)
-
     try {
+      const data = registerBodySchema.parse(request.body)
+
       const registerUserUseCase = makeRegisterUserUseCase()
 
       await registerUserUseCase.execute({
@@ -42,6 +42,12 @@ export class RegisterUserController {
         unlinkSync(
           resolve(__dirname, '../../../uploads/avatars', request.file.filename),
         )
+      }
+
+      if (error instanceof ZodError) {
+        return response.status(400).json({
+          message: error.format(),
+        })
       }
 
       if (error instanceof FieldInUseError) {

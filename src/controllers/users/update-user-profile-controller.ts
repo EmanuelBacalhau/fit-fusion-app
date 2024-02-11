@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { ZodError, z } from 'zod'
 import { env } from 'src/env'
 import { resolve } from 'path'
 import { unlinkSync } from 'fs'
@@ -20,9 +20,9 @@ export class UpdateUserProfileController {
       avatarUrl = `${env.BASE_URL}/uploads/${request.file.filename}`
     }
 
-    const data = updateBodySchema.parse(request.body)
-
     try {
+      const data = updateBodySchema.parse(request.body)
+
       const updateUserProfileUseCase = makeUpdateUserProfileUseCase()
 
       await updateUserProfileUseCase.execute(request.user.id, {
@@ -36,6 +36,12 @@ export class UpdateUserProfileController {
         unlinkSync(
           resolve(__dirname, '../../../uploads/avatars', request.file.filename),
         )
+      }
+
+      if (error instanceof ZodError) {
+        return response.status(400).json({
+          message: error.format(),
+        })
       }
 
       if (error instanceof ResourceNotFoundError) {

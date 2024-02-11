@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { ZodError, z } from 'zod'
 import { env } from '@src/env'
 import { sign } from 'jsonwebtoken'
 import { Request, Response } from 'express'
@@ -12,9 +12,9 @@ export class AuthenticateUserController {
       password: z.string().min(8),
     })
 
-    const data = authenticateBodySchema.parse(request.body)
-
     try {
+      const data = authenticateBodySchema.parse(request.body)
+
       const authenticateUserUseCase = makeAuthenticateUserUseCase()
 
       const userData = await authenticateUserUseCase.execute(data)
@@ -39,6 +39,12 @@ export class AuthenticateUserController {
         .status(200)
         .json({ token })
     } catch (error) {
+      if (error instanceof ZodError) {
+        return response.status(400).json({
+          message: error.format(),
+        })
+      }
+
       if (error instanceof InvalidCrediantialsError) {
         return response.status(error.status).json({
           message: error.message,
