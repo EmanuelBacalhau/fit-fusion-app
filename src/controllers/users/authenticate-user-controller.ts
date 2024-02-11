@@ -40,7 +40,9 @@ export class AuthenticateUserController {
         .json({ token })
     } catch (error) {
       if (error instanceof InvalidCrediantialsError) {
-        return response.status(error.status).end()
+        return response.status(error.status).json({
+          message: error.message,
+        })
       }
 
       throw error

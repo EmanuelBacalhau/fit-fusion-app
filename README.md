@@ -20,7 +20,7 @@ Fit Fusion
 
 - [X] Usuário não pode realizar cadastro com e-mail duplicado;
 - [X] Usuário não pode realizar cadastro com telefone duplicado;
-- [] Os dias da semana só podem ser registrado por AMDs;
+- [X] Os dias da semana só podem ser registrado por AMDs;
 - [] Os tipos de treino só podem ser registrado por AMDs;
 - [] Os exercicios só podem ser registrado por AMDs;
 - [] Usuário só pode visualizar seus treinos estando autenticado;

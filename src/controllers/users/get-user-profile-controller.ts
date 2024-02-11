@@ -14,7 +14,9 @@ export class GetUserProfileController {
       return response.status(200).json({ user })
     } catch (error) {
       if (error instanceof ResourceNotFoundError) {
-        return response.status(error.status).end()
+        return response.status(error.status).json({
+          message: error.message,
+        })
       }
 
       throw error
