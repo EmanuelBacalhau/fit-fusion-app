@@ -10,25 +10,26 @@ jobs:
     services:
       postgres:
         image: bitnami/postgresql
-        ports: 
+        ports:
           - 5432:5432
         env:
           POSTGRESQL_USERNAME: fitFusion
           POSTGRESQL_PASSWORD: fitFusion
           POSTGRESQL_DATABASE: fitFusion
-      
+
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-      with:
-        node-version: 18
-        cache: 'yarn'
-
-      - run: yarn ci
-
-      - run: yarn test:e2e
+      - name: Using Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      
+      - name: Run install, build and test
+        run: |
+          yarn
+          yarn build
+          yarn run test:e2
         env:
           JWT_SECRET: testing
           DATABASE_URL: "postgresql://fitFusion:fitFusion@localhost:5432/fitFusion?schema=public"
-      
+          
