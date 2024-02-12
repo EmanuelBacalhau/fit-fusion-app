@@ -30,7 +30,7 @@ export class UpdateUserProfileController {
         avatarUrl,
       })
 
-      response.status(204).end()
+      return response.status(204).end()
     } catch (error) {
       if (request.file?.filename) {
         unlinkSync(

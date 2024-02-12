@@ -1,5 +1,4 @@
 import { UsersRepository } from '@repositories/interfaces/users-repository'
-import { env } from '@src/env'
 import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
 import { unlinkSync } from 'fs'
 import { resolve } from 'path'
@@ -23,7 +22,7 @@ export class UpdateUserProfileUseCase {
 
     if (data.avatarUrl && user.avatarUrl !== null) {
       const filename = user.avatarUrl.replace(
-        `http://localhost:3333/uploads/avatars/`,
+        `${process.env.BASE_URL}/uploads/avatars/`,
         '',
       )
 

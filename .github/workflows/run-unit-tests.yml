@@ -19,4 +19,6 @@ jobs:
           yarn
           yarn build
           yarn run test:unit
+        env:
+          BASE_URL: "http://localhost:3333"
           
