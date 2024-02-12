@@ -28,7 +28,7 @@ jobs:
         run: |
           yarn
           yarn build
-          yarn run test:e2
+          yarn run test:e2e
         env:
           JWT_SECRET: testing
           DATABASE_URL: "postgresql://fitFusion:fitFusion@localhost:5432/fitFusion?schema=public"
