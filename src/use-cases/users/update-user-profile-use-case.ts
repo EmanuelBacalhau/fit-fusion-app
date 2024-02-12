@@ -22,7 +22,10 @@ export class UpdateUserProfileUseCase {
     }
 
     if (data.avatarUrl && user.avatarUrl !== null) {
-      const filename = user.avatarUrl.replace(`${env.BASE_URL}/uploads/`, '')
+      const filename = user.avatarUrl.replace(
+        `${env.BASE_URL}/uploads/avatars/`,
+        '',
+      )
 
       unlinkSync(resolve(__dirname, '../../../uploads/avatars', filename))
     }

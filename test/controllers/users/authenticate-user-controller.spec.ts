@@ -5,7 +5,7 @@ import { describe, it, expect } from 'vitest'
 
 describe('Authenticate user controller (e2e)', () => {
   it('should be able authenticate user', async () => {
-    const avatar = resolve(__dirname, '../../../src/utils/test/test.png')
+    const avatar = resolve(__dirname, '../../utils/test.png')
 
     await supertest(app)
       .post('/users')

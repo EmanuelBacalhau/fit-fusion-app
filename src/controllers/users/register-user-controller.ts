@@ -23,7 +23,7 @@ export class RegisterUserController {
     let avatarUrl = null
 
     if (request.file) {
-      avatarUrl = `${env.BASE_URL}/uploads/${request.file.filename}`
+      avatarUrl = `${env.BASE_URL}/uploads/avatars/${request.file.filename}`
     }
 
     try {

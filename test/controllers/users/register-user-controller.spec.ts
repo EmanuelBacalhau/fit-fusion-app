@@ -5,7 +5,7 @@ import { describe, it, expect } from 'vitest'
 
 describe('Register user controller (e2e)', () => {
   it('should be able registe user', async () => {
-    const avatar = resolve(__dirname, '../../../src/utils/test/test.png')
+    const avatar = resolve(__dirname, '../../utils/test.png')
 
     const response = await supertest(app)
       .post('/users')

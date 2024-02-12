@@ -4,5 +4,9 @@ declare namespace Express {
       id: string
       role: 'ADMIN' | 'CLIENT'
     }
+    files: {
+      cover: Multer.File[]
+      gif: Multer.File[]
+    }
   }
 }

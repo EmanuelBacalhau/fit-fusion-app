@@ -1,15 +1,13 @@
 import { app } from '@src/app'
+import { prisma } from '@src/libs/prisma'
 import { resolve } from 'path'
 import supertest from 'supertest'
 import { describe, it, expect } from 'vitest'
 
-describe('Get user profile controller (e2e)', () => {
-  it('should be able get user profile', async () => {
-    const avatar = resolve(__dirname, '../../utils/test.png')
-
+describe('Register exercises controller (e2e)', () => {
+  it('should be able register exercises', async () => {
     await supertest(app)
       .post('/users')
-      .attach('avatar', avatar)
       .field('firstName', 'John')
       .field('lastName', 'Doe')
       .field('email', 'johnDoe@gmail.com')
@@ -18,18 +16,32 @@ describe('Get user profile controller (e2e)', () => {
       .field('weight', 80)
       .field('height', 1.75)
       .field('gender', 'MALE')
+      .field('role', 'ADMIN')
 
     const responseAuth = await supertest(app).post('/sessions').send({
       email: 'johnDoe@gmail.com',
       password: '123456789',
     })
 
-    const response = await supertest(app)
-      .get('/me')
+    await supertest(app)
+      .post('/types-exercise')
       .auth(responseAuth.body.token, { type: 'bearer' })
-      .send()
+      .send({
+        name: 'Back test',
+      })
 
-    expect(response.status).toEqual(200)
-    expect(response.body.user).toEqual(expect.any(Object))
+    const types = await prisma.typeExercise.findMany()
+
+    const path = resolve(__dirname, '../../utils/test.png')
+
+    const response = await supertest(app)
+      .post('/exercises')
+      .auth(responseAuth.body.token, { type: 'bearer' })
+      .attach('gif', path)
+      .attach('cover', path)
+      .field('name', 'Board')
+      .field('typeId', types[0].id)
+
+    expect(response.status).toEqual(201)
   })
 })

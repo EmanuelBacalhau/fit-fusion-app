@@ -17,4 +17,5 @@ const storage = (path: string) => {
 
 export const multerConfig = {
   user: multer({ storage: storage('avatars') }),
+  exercise: multer({ storage: storage('exercises') }),
 }

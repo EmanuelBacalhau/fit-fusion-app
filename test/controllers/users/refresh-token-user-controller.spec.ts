@@ -5,7 +5,7 @@ import { describe, it, expect } from 'vitest'
 
 describe('Refresh token users controller (e2e)', () => {
   it('should be able refresh token', async () => {
-    const avatar = resolve(__dirname, '../../../src/utils/test/test.png')
+    const avatar = resolve(__dirname, '../../utils/test.png')
 
     await supertest(app)
       .post('/users')
