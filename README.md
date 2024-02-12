@@ -21,8 +21,8 @@ Fit Fusion
 - [X] Usuário não pode realizar cadastro com e-mail duplicado;
 - [X] Usuário não pode realizar cadastro com telefone duplicado;
 - [X] Os dias da semana só podem ser registrado por AMDs;
-- [] Os tipos de treino só podem ser registrado por AMDs;
-- [] Os exercicios só podem ser registrado por AMDs;
+- [X] Os tipos de treino só podem ser registrado por AMDs;
+- [X] Os exercicios só podem ser registrado por AMDs;
 - [] Usuário só pode visualizar seus treinos estando autenticado;
 - [] Usuário só pode visualizar seu histórico estando autenticado;
 - [] Usuário só pode realizar o check-in do treino estando autenticado;
@@ -32,6 +32,6 @@ Fit Fusion
 
 - [X] A senha do usuário deve estar criptografada;
 - [X] Os dados deve ser persistidos em um banco POSTGRESQL;
-- [] A autenticação deve ser realizada através do JWT(JSON Web Token);
-- [] As fotos de perfil dos usuários devem ser armazenadas localmente(servidor);
-- [] As capas e gifs do treino devem ser armazenadas localment(servidor)
+- [X] A autenticação deve ser realizada através do JWT(JSON Web Token);
+- [X] As fotos de perfil dos usuários devem ser armazenadas localmente(servidor);
+- [X] As capas e gifs do treino devem ser armazenadas localment(servidor)
