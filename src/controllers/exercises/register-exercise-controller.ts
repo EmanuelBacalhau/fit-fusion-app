@@ -56,13 +56,13 @@ export class RegisterExerciseController {
       }
 
       if (error instanceof ZodError) {
-        return response.status(401).json({
+        return response.status(400).json({
           message: error.format(),
         })
       }
 
       if (error instanceof ResourceNotFoundError) {
-        return response.status(401).json({
+        return response.status(error.status).json({
           message: error.message,
         })
       }

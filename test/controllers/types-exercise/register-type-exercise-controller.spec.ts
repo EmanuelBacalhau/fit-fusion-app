@@ -1,14 +1,8 @@
 import { app } from '@src/app'
-import { prisma } from '@src/libs/prisma'
 import supertest from 'supertest'
-import { describe, it, expect, afterEach } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
 describe('Register type exercise controller (e2e)', () => {
-  afterEach(async () => {
-    await prisma.$executeRawUnsafe('DELETE FROM users')
-    await prisma.$executeRawUnsafe('DELETE FROM types_exercises')
-  })
-
   it('should be able register type of exercise', async () => {
     await supertest(app)
       .post('/users')
