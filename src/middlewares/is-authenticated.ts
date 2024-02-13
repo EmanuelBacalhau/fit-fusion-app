@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
 import { JwtPayload, verify } from 'jsonwebtoken'
 import { env } from '@src/env'
+import { $Enums } from '@prisma/client'
 
 interface Payload extends JwtPayload {
-  role: string
+  role: $Enums.Role
 }
 
 export async function isAuthenticated(
