@@ -5,6 +5,7 @@ export interface ListOfUserHasExercises {
   series: number
   repetitions: number
   exercise: {
+    id: string
     name: string
     coverUrl: string
   }

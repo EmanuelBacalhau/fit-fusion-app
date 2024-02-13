@@ -29,6 +29,7 @@ export class PrismaUserHasExercisesRepository
         repetitions: true,
         exercise: {
           select: {
+            id: true,
             name: true,
             coverUrl: true,
           },
