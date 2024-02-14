@@ -5,6 +5,7 @@ import { typesExerciseRoutes } from './controllers/types-exercise/routes'
 import { exerciseRoutes } from './controllers/exercises/routes'
 import { userHasExerciseRoutes } from './controllers/user-has-exercises/routes'
 import { resolve } from 'path'
+import { historyRoutes } from './controllers/histories/routes'
 
 export const app = express()
 
@@ -21,6 +22,7 @@ app.use(
 
 app.use(dayRoutes)
 app.use(userRoutes)
+app.use(historyRoutes)
 app.use(exerciseRoutes)
 app.use(typesExerciseRoutes)
 app.use(userHasExerciseRoutes)
