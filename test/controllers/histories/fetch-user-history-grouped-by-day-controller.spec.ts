@@ -4,8 +4,8 @@ import { resolve } from 'path'
 import supertest from 'supertest'
 import { describe, it, expect } from 'vitest'
 
-describe('Register history controller (e2e)', () => {
-  it('should be able register history', async () => {
+describe('Register fetch user history grouped by day controller (e2e)', () => {
+  it('should be able to fetch user of history', async () => {
     await supertest(app)
       .post('/users')
       .field('firstName', 'John')
@@ -51,13 +51,19 @@ describe('Register history controller (e2e)', () => {
 
     const exercises = await prisma.exercise.findMany()
 
-    const response = await supertest(app)
+    await supertest(app)
       .post('/histories')
       .auth(responseAuth.body.token, { type: 'bearer' })
       .send({
         exerciseId: exercises[0].id,
       })
 
-    expect(response.status).toEqual(201)
+    const response = await supertest(app)
+      .get('/histories')
+      .auth(responseAuth.body.token, { type: 'bearer' })
+      .send()
+
+    expect(response.status).toEqual(200)
+    expect(response.body.history).toHaveLength(1)
   })
 })

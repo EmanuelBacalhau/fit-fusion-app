@@ -13,7 +13,7 @@ interface FetchUserHistoryGroupedByDayUseCaseResponse {
   history: UserHistoryByUserIdResponse[]
 }
 
-export class FetchUserHistoryUseCase {
+export class FetchUserHistoryGroupedByDayUseUseCase {
   constructor(
     private usersRepository: UsersRepository,
     private historiesRepository: HistoriesRepository,
