@@ -1,18 +1,21 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { InMemoryHistoriesRepository } from '@in-memory/in-memory-histories-repository'
 import { InMemoryUsersRepository } from '@in-memory/in-memory-users-repository'
-import { FetchUserHistoryUseCase } from '@use-cases/histories/fetch-user-history-grouped-by-day-use-case'
 import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
+import { FetchUserHistoryGroupedByDayUseUseCase } from '@src/use-cases/histories/fetch-user-history-grouped-by-day-use-case'
 
 let usersRepository: InMemoryUsersRepository
 let historiesRepository: InMemoryHistoriesRepository
-let sut: FetchUserHistoryUseCase
+let sut: FetchUserHistoryGroupedByDayUseUseCase
 
 describe('Fetch list history group by day use case', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository()
     historiesRepository = new InMemoryHistoriesRepository()
-    sut = new FetchUserHistoryUseCase(usersRepository, historiesRepository)
+    sut = new FetchUserHistoryGroupedByDayUseUseCase(
+      usersRepository,
+      historiesRepository,
+    )
   })
 
   it('should be able return list history group by day', async () => {
