@@ -32,6 +32,7 @@ export class PrismaUserHasExercisesRepository
             id: true,
             name: true,
             coverUrl: true,
+            gifUrl: true,
           },
         },
       },

@@ -69,8 +69,6 @@ describe('Fetch user has exercises controller (e2e)', () => {
       .auth(responseAuth.body.token, { type: 'bearer' })
       .send()
 
-    console.log(response.body.exercises)
-
     expect(response.status).toEqual(200)
     expect(response.body.exercises).toHaveLength(1)
   })

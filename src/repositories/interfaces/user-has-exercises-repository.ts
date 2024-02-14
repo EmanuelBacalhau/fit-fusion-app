@@ -8,6 +8,7 @@ export interface ListOfUserHasExercises {
     id: string
     name: string
     coverUrl: string
+    gifUrl: string
   }
 }
 

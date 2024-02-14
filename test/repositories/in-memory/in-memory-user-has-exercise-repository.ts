@@ -22,8 +22,10 @@ export class InMemoryUserHasExercisesRepository
         series: item.series,
         repetitions: item.repetitions,
         exercise: {
+          id: 'exercise-01',
           name: 'Exercise',
           coverUrl: 'cover.png',
+          gifUrl: 'gif.png',
         },
       }))
 
