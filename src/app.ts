@@ -6,8 +6,11 @@ import { exerciseRoutes } from './controllers/exercises/routes'
 import { userHasExerciseRoutes } from './controllers/user-has-exercises/routes'
 import { resolve } from 'path'
 import { historyRoutes } from './controllers/histories/routes'
+import cors from 'cors'
 
 export const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
