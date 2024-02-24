@@ -12,9 +12,6 @@ describe('Fetch user has exercises controller (e2e)', () => {
       .field('lastName', 'Doe')
       .field('email', 'johnDoe@gmail.com')
       .field('password', '123456789')
-      .field('phone', '88999999998')
-      .field('weight', 80)
-      .field('height', 1.75)
       .field('gender', 'MALE')
       .field('role', 'ADMIN')
 

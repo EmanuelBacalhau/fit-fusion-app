@@ -7,11 +7,8 @@ export interface RegisterUserUseCaseRequest {
   avatarUrl: string | null
   firstName: string
   lastName: string
-  phone: string
   email: string
   password: string
-  weight: number
-  height: number
   gender: $Enums.Gender
   role?: $Enums.Role
 }
@@ -23,12 +20,6 @@ export class RegisterUserUseCase {
     const emailInuse = await this.usersRepository.findByEmail(data.email)
 
     if (emailInuse) {
-      throw new FieldInUseError()
-    }
-
-    const phoneInUse = await this.usersRepository.findByPhone(data.phone)
-
-    if (phoneInUse) {
       throw new FieldInUseError()
     }
 

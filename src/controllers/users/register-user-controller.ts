@@ -11,11 +11,8 @@ export class RegisterUserController {
     const registerBodySchema = z.object({
       firstName: z.string(),
       lastName: z.string(),
-      phone: z.string(),
       email: z.string().email(),
       password: z.string().min(8),
-      weight: z.coerce.number(),
-      height: z.coerce.number(),
       gender: z.enum(['FEMALE', 'MALE']),
       role: z.enum(['CLIENT', 'ADMIN']).default('CLIENT'),
     })

@@ -21,9 +21,6 @@ describe('Update user profile use case', () => {
       password: '123456789',
       gender: 'MALE',
       role: 'CLIENT',
-      phone: '00000000000',
-      height: 1.75,
-      weight: 75,
       avatarUrl: 'test.png',
       created_at: new Date(),
     })

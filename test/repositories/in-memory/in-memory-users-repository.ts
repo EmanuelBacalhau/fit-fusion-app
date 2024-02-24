@@ -35,16 +35,6 @@ export class InMemoryUsersRepository implements UsersRepository {
     return user
   }
 
-  async findByPhone(phone: string) {
-    const user = this.items.find((item) => item.phone === phone)
-
-    if (!user) {
-      return false
-    }
-
-    return true
-  }
-
   async update(userId: string, data: UpdateUser): Promise<void> {
     const user = this.items.find((item) => item.id === userId)
 

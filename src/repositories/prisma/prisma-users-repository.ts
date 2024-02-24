@@ -32,16 +32,6 @@ export class PrismaUsersRepository implements UsersRepository {
     return user
   }
 
-  async findByPhone(phone: string) {
-    const user = await prisma.user.findUnique({
-      where: {
-        phone,
-      },
-    })
-
-    return !!user
-  }
-
   async update(userId: string, data: UpdateUser) {
     await prisma.user.update({
       where: {

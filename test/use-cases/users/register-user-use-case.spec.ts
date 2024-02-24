@@ -20,9 +20,6 @@ describe('Register user use case', () => {
       password: '123456789',
       gender: 'MALE',
       role: 'CLIENT',
-      phone: '00000000000',
-      height: 1.75,
-      weight: 75,
       avatarUrl: 'test.png',
     })
 
@@ -37,9 +34,6 @@ describe('Register user use case', () => {
       password: '123456789',
       gender: 'MALE',
       role: 'CLIENT',
-      phone: '00000000000',
-      height: 1.75,
-      weight: 75,
       avatarUrl: 'test.png',
     })
 
@@ -51,9 +45,6 @@ describe('Register user use case', () => {
         password: '123456789',
         gender: 'MALE',
         role: 'CLIENT',
-        phone: '00000000000',
-        height: 1.75,
-        weight: 75,
         avatarUrl: 'test.png',
       }),
     ).rejects.toBeInstanceOf(FieldInUseError)

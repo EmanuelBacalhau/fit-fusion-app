@@ -22,11 +22,8 @@ model User {
   avatarUrl  String?
   firstName  String
   lastName   String
-  phone      String   @unique
   email      String   @unique
   password   String
-  weight     Float
-  height     Float
   gender     Gender
   role       Role     @default(CLIENT)
   created_at DateTime @default(now()) @db.Date

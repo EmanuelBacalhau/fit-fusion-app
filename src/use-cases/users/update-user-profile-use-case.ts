@@ -1,5 +1,6 @@
 import { UsersRepository } from '@repositories/interfaces/users-repository'
 import { ResourceNotFoundError } from '@use-cases/errors/resource-not-found-error'
+import { hash } from 'bcryptjs'
 import { unlinkSync } from 'fs'
 import { resolve } from 'path'
 
@@ -29,6 +30,11 @@ export class UpdateUserProfileUseCase {
       unlinkSync(resolve(__dirname, '../../../uploads/avatars', filename))
     }
 
-    await this.usersRepository.update(userId, data)
+    const passwordHash = data.password && (await hash(data.password, 6))
+
+    await this.usersRepository.update(userId, {
+      ...data,
+      password: passwordHash,
+    })
   }
 }

@@ -20,9 +20,6 @@ describe('Authenticate user use case', () => {
       password: await hash('123456789', 5),
       gender: 'MALE',
       role: 'CLIENT',
-      phone: '00000000000',
-      height: 1.75,
-      weight: 75,
       avatarUrl: 'test.png',
       created_at: new Date(),
     })
