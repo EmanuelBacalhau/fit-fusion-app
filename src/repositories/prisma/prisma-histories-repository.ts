@@ -21,6 +21,7 @@ export class PrismaHistoriesRepository implements HistoriesRepository {
         userId,
       },
       select: {
+        id: true,
         realizedIn: true,
         exercise: {
           select: {
@@ -52,6 +53,7 @@ export class PrismaHistoriesRepository implements HistoriesRepository {
           return formattedDay === day
         })
         .map((history) => ({
+          id: history.id,
           hour: dayjs(history.realizedIn).format('HH:mm'),
           exercise: {
             name: history.exercise.name,

@@ -26,6 +26,7 @@ export class InMemoryHistoriesRepository implements HistoriesRepository {
           return item.userId === userId && day === formatedDay
         })
         .map((exercise) => ({
+          id: exercise.id,
           hour: dayjs(exercise.realizedIn).format('HH:mm'),
           exercise: {
             name: 'Training',

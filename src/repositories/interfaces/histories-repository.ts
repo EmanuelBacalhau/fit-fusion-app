@@ -1,6 +1,7 @@
 import { Prisma } from '@prisma/client'
 
 interface HistoryResponse {
+  id: string
   hour: string
   exercise: {
     name: string
