@@ -21,23 +21,9 @@ export class AuthenticateUserController {
 
       const token = sign({ role: userData.role }, env.JWT_SECRET, {
         subject: userData.userId,
-        expiresIn: '1h',
       })
 
-      const refreshToken = sign({ role: userData.role }, env.JWT_SECRET, {
-        subject: userData.userId,
-        expiresIn: '1d',
-      })
-
-      return response
-        .cookie('refresh-token', refreshToken, {
-          path: '/',
-          secure: true,
-          sameSite: true,
-          httpOnly: true,
-        })
-        .status(200)
-        .json({ token })
+      return response.status(200).json({ token })
     } catch (error) {
       if (error instanceof ZodError) {
         return response.status(400).json({

@@ -7,6 +7,7 @@ interface GetProfileUserUseCaseRequest {
 
 interface GetProfileUserUseCaseResponse {
   user: {
+    id: string
     email: string
     firstName: string
     lastName: string
@@ -28,6 +29,7 @@ export class GetProfileUserUseCase {
 
     return {
       user: {
+        id: user.id,
         avatarUrl: user.avatarUrl,
         email: user.email,
         firstName: user.firstName,

@@ -31,4 +31,8 @@ export class InMemorDaysRepository implements DaysRepository {
 
     return true
   }
+
+  async findMany() {
+    return this.items
+  }
 }

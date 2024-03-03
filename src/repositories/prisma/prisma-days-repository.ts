@@ -28,4 +28,10 @@ export class PrismaDaysRepository implements DaysRepository {
 
     return day
   }
+
+  async findMany() {
+    const days = await prisma.day.findMany()
+
+    return days
+  }
 }
