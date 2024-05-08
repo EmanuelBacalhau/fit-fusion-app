@@ -24,9 +24,9 @@ Fit Fusion
 - [X] Os tipos de treino só podem ser registrado por AMDs;
 - [X] Os exercicios só podem ser registrado por AMDs;
 - [X] Usuário só pode visualizar seus treinos estando autenticado;
-- [] Usuário só pode visualizar seu histórico estando autenticado;
-- [] Usuário só pode realizar o check-in do treino estando autenticado;
-- [] Usuário só pode realizar o a atualização de dados do perfil estando autenticado;
+- [X] Usuário só pode visualizar seu histórico estando autenticado;
+- [X] Usuário só pode realizar o check-in do treino estando autenticado;
+- [X] Usuário só pode realizar o a atualização de dados do perfil estando autenticado;
 
 ## RNFs (Requisitos não funcionais)
 
